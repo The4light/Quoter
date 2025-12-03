@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quote Generator</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 40px; }
+    blockquote { font-size: 24px; margin: 30px 0; color: #333; }
+    button { padding: 12px 24px; font-size: 18px; cursor: pointer; margin: 5px; }
+  </style>
+</head>
+<body>
+  <h1> ✨Daily Inspiration</h1>
+  
+  <button id="quoteBtn">Show Me a Quote</button>
+  <button id="clearBtn">Clear</button>
+
+  <blockquote id="quoteDisplay">Click the button!</blockquote>
+  <p id="authorDisplay"></p>
+
+  <script>
+    const quotes = [
+      { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+      { text: "It does not do to dwell on dreams and forget to live.", author: "J.K. Rowling" },
+      { text: "Success is not final, failure is not fatal: It is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "Do what you can, with what you have, where you are.", author: "Theodore Roosevelt" },
+      { text: "The only limit to our realization of tomorrow is our doubts of today.", author: "Franklin D. Roosevelt" },
+      { text: "You miss 100% of the shots you don't take.", author: "Wayne Gretzky" }
+    ];
+
+    const btn = document.getElementById("quoteBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const quoteText = document.getElementById("quoteDisplay");
+    const authorText = document.getElementById("authorDisplay");
+
+    btn.addEventListener("click", function() {
+      const randomIndex = Math.floor(Math.random() * quotes.length);
+      const randomQuote = quotes[randomIndex];
+      
+      quoteText.textContent = `"${randomQuote.text}"`;
+      authorText.textContent = `– ${randomQuote.author}`;
+    });
+
+    clearBtn.addEventListener("click", function() {
+      quoteText.textContent = "Click the button!";
+      authorText.textContent = "";
+    });
+  </script>
+</body>
+</html>
